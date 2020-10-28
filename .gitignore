@@ -1,0 +1,11 @@
+.vs*
+**/bin/
+**/obj/
+**/*.min.css
+**/*.min.js
+src/Gameboard/Gameboard.xml
+**/appsettings.*.json
+.DS_Store
+src/Gameboard/Gameboard.csproj.user
+src/Gameboard.Api/wwwroot/doc/img/pcup-glitch1.gif
+src/Gameboard.Api/Gameboard.Api.xml

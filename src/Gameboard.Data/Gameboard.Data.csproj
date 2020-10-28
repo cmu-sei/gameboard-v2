@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+        <ProjectGuid>{FF3DDF1F-BF73-42C4-9FD5-204488452C3C}</ProjectGuid>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Foundry.Stack.Data" Version="1.1.0" />
+		<PackageReference Include="Foundry.Stack.Patterns.Repository" Version="1.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
+		<PackageReference Include="GameEngine.Abstractions" Version="1.1.9" />
+		<PackageReference Include="GameEngine.Client" Version="1.1.9" />
+	</ItemGroup>
+</Project>

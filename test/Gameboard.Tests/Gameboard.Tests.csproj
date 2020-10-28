@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.2</TargetFramework>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Foundry.Stack.Communication.Notifications" Version="1.0.0" />
+		<PackageReference Include="Foundry.Stack.Data" Version="1.1.0" />
+		<PackageReference Include="Foundry.Stack.DomainEvents" Version="1.0.0" />
+		<PackageReference Include="Foundry.Stack.Http" Version="1.1.0" />
+		<PackageReference Include="Foundry.Stack.Http.Identity" Version="2.0.1" />
+		<PackageReference Include="Foundry.Stack.Patterns.Service" Version="2.0.0" />
+		<PackageReference Include="Foundry.Stack.Validation" Version="3.0.0" />
+		<PackageReference Include="GameEngine.Abstractions" Version="1.1.9" />
+		<PackageReference Include="GameEngine.Client" Version="1.1.9" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+		<PackageReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Moq" Version="4.10.1" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Gameboard.Data\Gameboard.Data.csproj" />
+		<ProjectReference Include="..\..\src\Gameboard\Gameboard.csproj" />
+	</ItemGroup>
+
+</Project>

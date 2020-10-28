@@ -1,0 +1,57 @@
+@*
+Copyright 2020 Carnegie Mellon University. All Rights Reserved.
+Released under a MIT (SEI)-style license. See LICENSE.md in the project root for license information.
+*@
+
+@model Gameboard.Api.Models.HomeModel
+<html>
+<head>
+    <title>@Model.ApplicationName</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h2>@Model.ApplicationName</h2>
+        <p>
+            Beep! Boop! Bop! Running...
+        </p>
+        <ul>
+            <li><strong>API</strong></li>
+            <li><a href="~/api">docs</a></li>
+            <li><a href="~/api/v1/api.json">json</a></li>
+        </ul>
+        <div></div>
+        <ul>
+            @foreach (var module in Model.ApiStatus.Modules)
+            {
+                <li><strong>@module.Name</strong> | @module.Version | @module.Build</li>
+            }
+        </ul>
+        <ul onclick="toggle(this, 'config')">
+            <li><strong>Configuration</strong></li>
+        </ul>
+        <div id="config">
+            <ol>
+                @foreach (var config in Model.Configuration)
+                {
+                    <li>
+                        <strong>@config.Name</strong>
+                        <ol>
+                            @foreach (var setting in config.Settings)
+                            {
+                            <li><u>@setting.Key</u>:&nbsp; @setting.Value</li>
+                            }
+                        </ol>
+                    </li>
+                }
+            </ol>
+        </div>
+    </header>
+    <footer>
+        Carnegie Mellon University - Software Engineering Institute &copy; @DateTime.Now.Year
+    </footer>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+

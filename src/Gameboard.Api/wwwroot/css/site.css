@@ -1,0 +1,59 @@
+/*
+Copyright 2020 Carnegie Mellon University. All Rights Reserved.
+Released under a MIT (SEI)-style license. See LICENSE.md in the project root for license information.
+*/
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: #000;
+    font-size: 10pt;
+}
+
+ol, ul {
+    list-style: none;
+    font-size: 10pt;
+    padding: 1em 0;
+    margin: 0;
+    border-bottom: solid 1px #eee;
+}
+
+    ul li {
+        display: inline-block;
+        padding-right: 1em;
+    }
+
+        ul li a {
+            color: #000;
+        }
+
+
+    ol li ol li {
+        padding-left: 1em;
+    }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #b00;
+    font-size: 18pt;
+}
+
+header {
+    padding: 100px;
+}
+
+footer {
+    color: #777;
+    font-size: 16pt;
+    background: #333;
+    padding: 60px 100px;
+}
+
+#config {
+    display: none;
+}
+

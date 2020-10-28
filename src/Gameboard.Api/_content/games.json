@@ -1,0 +1,383 @@
+[
+  {
+    "id": "dev-game",
+    "name": "Dev Game",
+    "maxTeamSize": 0,
+    "minTeamSize": 0,
+    "enrollmentEndsAt": "2020-12-31",
+    "maxConcurrentProblems": 2,
+    "boards": [
+      {
+        "name": "Demo",
+        "maxMinutes": 0,
+        "maxSubmissions": 2,
+        "isPractice": true,
+        "order": 0,
+        "categories": [
+          {
+            "name": "Analyze and Investigate",
+            "order": 0,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 0
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 1
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 2
+              }
+            ]
+          },
+          {
+            "name": "Collect and Operate",
+            "order": 1,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 0
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 1
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 2
+              }
+            ]
+          },
+          {
+            "name": "Operate and Maintain",
+            "order": 2,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 0
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 1
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 2
+              }
+            ]
+          },
+          {
+            "name": "Protect and Defend",
+            "order": 3,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 0
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 1
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 2
+              }
+            ]
+          },
+          {
+            "name": "Securely Provision",
+            "order": 4,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 0
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 1
+              },
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 1000,
+                "order": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Round 1",
+        "maxSubmissions": 2,
+        "maxConcurrentProblems": 2,
+        "isPractice": false,
+        "order": 1,
+        "categories": [
+          {
+            "name": "Analyze and Investigate",
+            "order": 0,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Collect and Operate",
+            "order": 1,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Operate and Maintain",
+            "order": 2,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Protect and Defend",
+            "order": 3,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Securely Provision",
+            "order": 4,
+            "questions": [
+              {
+                "challengeLink": { "slug": "demo-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MultiFlag",
+        "maxSubmissions": 2,
+        "maxConcurrentProblems": 2,
+        "order": 2,
+        "categories": [
+          {
+            "name": "Analyze and Investigate",
+            "order": 0,
+            "questions": [
+              {
+                "challengeLink": { "slug": "MF-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Collect and Operate",
+            "order": 1,
+            "questions": [
+              {
+                "challengeLink": { "slug": "MF-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Operate and Maintain",
+            "order": 2,
+            "questions": [
+              {
+                "challengeLink": { "slug": "MF-01" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Protect and Defend",
+            "order": 3,
+            "questions": [
+              {
+                "challengeLink": { "slug": "MF-02" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          },
+          {
+            "name": "Securely Provision",
+            "order": 4,
+            "questions": [
+              {
+                "challengeLink": { "slug": "MF-02" },
+                "points": 250,
+                "order": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Command & Conquer",
+        "boardType": "Map",
+        "order": 3,
+        "maxSubmissions": 2,
+        "maxConcurrentProblems": 2,
+        "maps": [
+          {
+            "id": "intro",
+            "name": "Introduction",
+            "isDefault": true,
+            "order": 0,
+            "imageUrl": "https://localhost/image.jpg",
+            "coordinates": [
+              {
+                "name": "Video",
+                "x": 30.8,
+                "y": 57,
+                "radius": 3,
+                "actionType": "Video",
+                "actionValue": "https://localhost/image.mp4"
+              },
+              {
+                "name": "Go To Finals",
+                "x": 78.7,
+                "y": 76.5,
+                "radius": 2,
+                "actionType": "Map",
+                "actionValue": "finals"
+              }
+            ]
+          },
+          {
+            "id": "finals",
+            "name": "Finals",
+            "order": 1,
+            "imageUrl": "https://localhost/image.jpg",
+            "coordinates": [
+              {
+                "x": 12,
+                "y": 35,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 24,
+                "y": 15,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 30,
+                "y": 35,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 34,
+                "y": 16,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 48,
+                "y": 33,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 55,
+                "y": 65,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 64,
+                "y": 27,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-02" }
+              },
+              {
+                "x": 85,
+                "y": 45,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-02" }
+              },
+              {
+                "x": 87,
+                "y": 35,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 89,
+                "y": 24,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Challenge",
+                "challengeLink": { "slug": "MF-01" }
+              },
+              {
+                "x": 0.5,
+                "y": 0.5,
+                "radius": 2,
+                "points": 100,
+                "actionType": "Map",
+                "actionValue": "intro"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

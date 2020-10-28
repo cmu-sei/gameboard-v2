@@ -1,0 +1,111 @@
+@api = http://localhost:5075/api
+@json = Content-Type: application/json
+@auth = Authorization: Bearer {{login.response.body.access_token}}
+@challenge = 7a5a2b49d39502c3f43515772f0e985bf564f1b8
+
+###
+# @name login
+POST http://localhost:5000/connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password
+&client_id=dev-client
+&client_secret=dev-secret
+&username=admin@this.ws
+&password=321ChangeMe!
+&scope=openid profile identity-api identity-api-privileged sketch-common
+
+###
+GET {{api}}/boards
+
+###
+GET {{api}}/board/practice
+
+###
+GET {{api}}/challenge/{{challenge}}
+
+###
+PUT {{api}}/challenge/{{challenge}}/start
+{{json}}
+{{auth}}
+
+###
+GET {{api}}/console/422e2cd7-bd8c-1499-2dc3-63ab03ce6ffb/dragon
+{{auth}}
+###
+
+PUT {{api}}/challenge/{{challenge}}/flag
+{{json}}
+{{auth}}
+
+{
+    "ChallengeId": "{{challenge}}",
+    "Flag": "303a1f6b"
+}
+
+###
+POST {{api}}/teams
+{{auth}}
+{{json}}
+
+{
+    "Name": "jamOn",
+    "OrganizationName": "OrgName"
+}
+
+###
+@id = 7acc07fa-46cf-4723-aa0d-d8545f7ae24c
+PUT {{api}}/team/{{id}}/code
+{{auth}}
+
+###
+PUT {{api}}/team/{{id}}/join
+{{auth}}
+
+629253
+
+###
+GET {{api}}/team/{{id}}
+{{auth}}
+
+
+###
+GET {{api}}/teams
+{{auth}}
+
+###
+GET {{api}}/user/9fd3c38e-58b0-4af1-80d1-1895af91f1f9
+{{auth}}
+
+###
+POST {{api}}/teams
+{{json}}
+{{auth}}
+
+{
+    "name": "jamON!"
+}
+
+###
+POST http://localhost:5000/api/resource/devimport
+{{json}}
+
+{
+    "Apis": [ "gameboard-api" ],
+    "Clients": [
+        {
+            "Id": "gameboard-ui",
+            "DisplayName": "",
+            "GrantType": "authorization_code",
+            "Scopes": "openid profile gameboard-api",
+            "Secret": "",
+            "RedirectUrl": "http://localhost:5008/oidc"
+        },
+        {
+            "Id": "gameboard-swagger",
+            "GrantType": "implicit",
+            "Scopes": "openid gameboard-api",
+            "RedirectUrl": "http://localhost:5008/api/oauth2-redirect.html"
+        }
+    ]
+}

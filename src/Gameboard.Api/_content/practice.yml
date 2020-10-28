@@ -1,0 +1,29 @@
+name: Practice
+isPractice: true
+initialValue: 250
+valueIncrement: 250
+categories:
+  - name: Alpha
+    challenges:
+      - externalKey: democup_newbie_01
+      - externalKey: democup_newbie_02
+      - externalKey: democup_newbie_03
+      - externalKey: democup_newbie_04
+  - name: Bravo
+    challenges:
+      - externalKey: democup_newbie_01
+      - externalKey: democup_newbie_02
+      - externalKey: democup_newbie_03
+      - externalKey: democup_newbie_04
+  - name: Charlie
+    challenges:
+      - externalKey: democup_newbie_01
+      - externalKey: democup_newbie_02
+      - externalKey: democup_newbie_03
+      - externalKey: democup_newbie_04
+  - name: Delta
+    challenges:
+      - externalKey: democup_newbie_01
+      - externalKey: democup_newbie_02
+      - externalKey: democup_newbie_03
+      - externalKey: democup_newbie_04

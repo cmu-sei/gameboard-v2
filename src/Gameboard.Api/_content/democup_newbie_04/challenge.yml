@@ -1,0 +1,8 @@
+title: Definitely a Challenge
+tags: sp10002 sp1003
+description: |
+  This one hurts.  Given a network with windows
+  and kali boxes, retrieve a flag from the root
+  of each box.  Alphbetize, Concatenate, and Hash
+  (SHA1) to generate a flag.
+  (Or just submit the random hex value)
