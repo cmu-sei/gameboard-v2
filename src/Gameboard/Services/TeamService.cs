@@ -470,7 +470,8 @@ namespace Gameboard.Services
                     GamespaceReady = p.GamespaceReady,
                     ProblemId = p.Id,
                     BoardId = board.Id,
-                    BoardName = board.Name
+                    BoardName = board.Name,
+                    WorkspaceCode = board.AllowSharedWorkspaces && p.GamespaceReady ? p.SharedId : string.Empty
                 });
             }
 

@@ -170,7 +170,7 @@ namespace Gameboard.Services
                 model.FlagIndex = flagIndex;
             }
 
-            if (!string.IsNullOrEmpty(problem.SharedId))
+            if (board.AllowSharedWorkspaces && !string.IsNullOrEmpty(problem.SharedId))
             {
                 model.IsolationId = problem.SharedId;
             }
