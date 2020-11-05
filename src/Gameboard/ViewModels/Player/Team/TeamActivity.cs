@@ -12,7 +12,6 @@ namespace Gameboard.ViewModels
     {
         public string Id { get; set; }
         public string Name { get; set; }
-
         public List<string> Badges { get; set; } = new List<string>();
         public bool IsDisabled { get; set; }
         public string Title { get; set; }
@@ -22,10 +21,9 @@ namespace Gameboard.ViewModels
         public double Score { get; set; }
         public bool GamespaceReady { get; set; }
         public string ProblemId { get; set; }
-
         public string BoardName { get; set; }
-
         public string BoardId { get; set; }
+        public string WorkspaceCode { get; set; }
     }
 
     public class TeamActivityExport
@@ -43,6 +41,7 @@ namespace Gameboard.ViewModels
         public string ProblemId { get; set; }
         public string BoardName { get; set; }
         public string BoardId { get; set; }
+        public string WorkspaceCode { get; set; }
     }
 }
 
