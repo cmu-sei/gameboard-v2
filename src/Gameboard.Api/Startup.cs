@@ -46,6 +46,8 @@ namespace Gameboard.Api
     public class Startup
     {
         string ApplicationName { get; set; } = "";
+        string PathBase { get; set; } = "";
+        bool ShowSwagger { get; set; }
         public CachingOptions CachingOptions { get; set; } = new CachingOptions();
 
         public Stack.Http.Options.AuthorizationOptions AuthorizationOptions { get; set; } = new Stack.Http.Options.AuthorizationOptions();
@@ -56,6 +58,8 @@ namespace Gameboard.Api
             Configuration.GetSection("Authorization").Bind(AuthorizationOptions);
             Configuration.GetSection("Caching").Bind(CachingOptions);
             ApplicationName = Configuration["Branding:ApplicationName"];
+            PathBase = Configuration["Branding:PathBase"];
+            ShowSwagger = bool.Parse(Configuration["Branding:ShowSwagger"]);
         }
 
         /// <summary>
@@ -72,7 +76,9 @@ namespace Gameboard.Api
             services.AddDbContextPool<GameboardDbContext>(builder => builder.UseConfiguredDatabase("Gameboard.Data", Configuration));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSwagger(ApplicationName, AuthorizationOptions);
+
+            if (ShowSwagger)
+                services.AddSwagger(ApplicationName, AuthorizationOptions);
 
             // configure caching strategy
             // TODO: handle scenario where no caching is required with a basic handler
@@ -155,7 +161,7 @@ namespace Gameboard.Api
             );
             services.AddScoped<IGameEngineEventHandler, GameEngineEventHandler>();
 
-            // single hosted service that manages defined routines                        
+            // single hosted service that manages defined routines
             services.AddHostedService<RoutineHostedService>();
 
             // hosted service routines called by RoutingHostedService
@@ -234,24 +240,29 @@ namespace Gameboard.Api
                 app.UseExceptionHandler("/error");
             }
 
+            app.UsePathBase(PathBase);
+
             app.UseCors("default");
             app.UseResponseCompression();
             app.UseResponseCaching();
             app.UseStaticFiles();
             app.UseAuthentication();
 
-            app.UseSwagger(c =>
+            if (ShowSwagger)
             {
-                c.RouteTemplate = "api/{documentName}/api.json";
-            });
-            app.UseSwaggerUI(c =>
-            {
-                c.RoutePrefix = "api";
-                c.SwaggerEndpoint("/api/v1/api.json", ApplicationName + " (v1)");
-                c.OAuthClientId(AuthorizationOptions.ClientId);
-                c.OAuthClientSecret(AuthorizationOptions.ClientSecret);
-                c.OAuthAppName(AuthorizationOptions.ClientName);
-            });
+                app.UseSwagger(c =>
+                {
+                    c.RouteTemplate = "api/{documentName}/api.json";
+                });
+                app.UseSwaggerUI(c =>
+                {
+                    c.RoutePrefix = "api";
+                    c.SwaggerEndpoint("/api/v1/api.json", ApplicationName + " (v1)");
+                    c.OAuthClientId(AuthorizationOptions.ClientId);
+                    c.OAuthClientSecret(AuthorizationOptions.ClientSecret);
+                    c.OAuthAppName(AuthorizationOptions.ClientName);
+                });
+            }
 
             app.UseSignalR(config => config.MapHub<GameboardHub>("/hub"));
 
@@ -265,4 +276,3 @@ namespace Gameboard.Api
         }
     }
 }
-
