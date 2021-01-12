@@ -252,12 +252,12 @@ namespace Gameboard.Api
             {
                 app.UseSwagger(c =>
                 {
-                    c.RouteTemplate = "api/{documentName}/api.json";
+                    c.RouteTemplate = "api/{documentName}/openapi.json";
                 });
                 app.UseSwaggerUI(c =>
                 {
                     c.RoutePrefix = "api";
-                    c.SwaggerEndpoint("/api/v1/api.json", ApplicationName + " (v1)");
+                    c.SwaggerEndpoint($"{PathBase}/api/v1/openapi.json", ApplicationName + " (v1)");
                     c.OAuthClientId(AuthorizationOptions.ClientId);
                     c.OAuthClientSecret(AuthorizationOptions.ClientSecret);
                     c.OAuthAppName(AuthorizationOptions.ClientName);
