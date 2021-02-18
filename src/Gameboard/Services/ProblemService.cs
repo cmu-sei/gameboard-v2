@@ -74,7 +74,7 @@ namespace Gameboard.Services
         public async Task<ProblemDetail> GetById(string id)
         {
             return Map<ProblemDetail>(await Repository.GetById(id));
-        }        
+        }
 
         /// <summary>
         /// create new problem
@@ -99,20 +99,6 @@ namespace Gameboard.Services
 
             if (problem == null)
             {
-                //TODO: The current implementation assumes all workspaces on a board are shared because the sharedid comes from the teamboard.
-                // Using a combination of the boardid, teamid and workspaceid would allow a board to have multiple differernt shared workspaces.
-                //string workspaceId = string.Empty;
-
-                //if (board.AllowSharedWorkspaces)
-                //{
-                //    var challengeSpec = GameFactory.ChallengeSpecs.Where(c => c.Slug.ToLower() == challenge.Slug.ToLower()).FirstOrDefault();
-
-                //    if (challengeSpec != null && challengeSpec.Workspace != null)
-                //    {
-                //        Don't do it this way! This does guarantee unique ids across workspaces.
-                //        workspaceId = board.Id.Substring(0, 24) + Identity.User.TeamId.Substring(25, 12 - challengeSpec.Workspace.Id.ToString().Length) + challengeSpec.Workspace.Id;
-                //    }
-                //}
 
                 var entity = new Problem
                 {
@@ -121,8 +107,9 @@ namespace Gameboard.Services
                     BoardId = board.Id,
                     MaxSubmissions = board.MaxSubmissions,
                     Slug = challenge.Slug,
-                    SharedId = teamBoard.SharedId
-                    //SharedId = workspaceId
+                    SharedId = board.AllowSharedWorkspaces
+                        ? teamBoard.SharedId
+                        : null
                 };
 
                 await Repository.Add(entity);
@@ -132,11 +119,11 @@ namespace Gameboard.Services
                     .ThenInclude(t => t.Users)
                     .SingleOrDefaultAsync(p => p.Id == entity.Id);
 
-                //if (string.IsNullOrEmpty(problem.SharedId))
-                //{
-                //    problem.SharedId = problem.Id;
-                //    await Repository.Update(problem);
-                //}
+                if (string.IsNullOrEmpty(problem.SharedId))
+                {
+                   problem.SharedId = problem.Id;
+                   await Repository.Update(problem);
+                }
             }
 
             var engineModel = BuildGameEngineProblem(game, board, challenge, problem, teamBoard, model.FlagIndex);
@@ -219,7 +206,7 @@ namespace Gameboard.Services
 
         /// <summary>
         /// remove survey data related to challenge and user intersection
-        /// </summary>        
+        /// </summary>
         /// <param name="userIds"></param>
         /// <param name="challengeIds"></param>
         void RemoveSurveys(string[] userIds, string[] challengeIds)
@@ -526,4 +513,3 @@ namespace Gameboard.Services
         }
     }
 }
-
