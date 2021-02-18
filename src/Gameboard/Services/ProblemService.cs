@@ -357,8 +357,12 @@ namespace Gameboard.Services
             var problem = await Repository.GetById(model.Id);
 
             await EngineService.Delete(problem.SharedId);
-            problem.GamespaceReady = false;
-            await Repository.Update(problem);
+
+            foreach (var p in Repository.GetAll().Where(o => o.SharedId == problem.SharedId))
+            {
+                p.GamespaceReady = false;
+                await Repository.Update(p);
+            }
         }
 
         /// <summary>
