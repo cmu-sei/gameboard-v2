@@ -307,6 +307,7 @@ namespace Gameboard.Api.Controllers
         [HttpPut("api/team/sendmessage")]
         [JsonExceptionFilter]
         [ProducesResponseType(typeof(bool), 200)]
+        [StackAuthorize(StackAuthorizeType.RequireAll, Permission.Moderator)]
         public async Task<IActionResult> SendMessage([FromBody]string message)
         {
             await GameboardHub.Clients.All.SystemMessage(message);
@@ -321,6 +322,7 @@ namespace Gameboard.Api.Controllers
         [HttpPut("api/teams/badges")]
         [JsonExceptionFilter]
         [ProducesResponseType(typeof(bool), 200)]
+        [StackAuthorize(StackAuthorizeType.RequireAll, Permission.Moderator)]
         public async Task<IActionResult> UpdateBadges([FromBody]List<TeamBadgeUpdate> model)
         {
             var result = await Service.UpdateBadges(model);
@@ -342,6 +344,7 @@ namespace Gameboard.Api.Controllers
         [HttpPut("api/teams/disable")]
         [JsonExceptionFilter]
         [ProducesResponseType(typeof(bool), 200)]
+        [StackAuthorize(StackAuthorizeType.RequireAll, Permission.Moderator)]
         public async Task<IActionResult> Disable([FromBody]List<string> ids)
         {
             return Ok(await Service.SetTeamStatus(ids, true));
@@ -355,6 +358,7 @@ namespace Gameboard.Api.Controllers
         [HttpPut("api/teams/enable")]
         [JsonExceptionFilter]
         [ProducesResponseType(typeof(bool), 200)]
+        [StackAuthorize(StackAuthorizeType.RequireAll, Permission.Moderator)]
         public async Task<IActionResult> Enable([FromBody]List<string> ids)
         {
             return Ok(await Service.SetTeamStatus(ids, false));
@@ -377,4 +381,3 @@ namespace Gameboard.Api.Controllers
         }
     }
 }
-
