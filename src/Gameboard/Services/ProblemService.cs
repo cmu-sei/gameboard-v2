@@ -107,7 +107,7 @@ namespace Gameboard.Services
                     BoardId = board.Id,
                     MaxSubmissions = board.MaxSubmissions,
                     Slug = challenge.Slug,
-                    SharedId = board.AllowSharedWorkspaces
+                    SharedId = board.AllowSharedWorkspaces // TODO: && challenge.HasSharedGamespace
                         ? teamBoard.SharedId
                         : null
                 };

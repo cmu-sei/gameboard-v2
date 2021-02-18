@@ -28,7 +28,7 @@ namespace Gameboard.Integrations
         IProblemRepository ProblemRepository { get; }
         ISubmissionRepository SubmissionRepository { get; }
         IHubContext<GameboardHub, IGameboardEvent> Hub { get; }
-        TeamService TeamService { get; }        
+        TeamService TeamService { get; }
         IGameFactory GameFactory { get; }
         IGameEngineService EngineService { get; }
 
@@ -41,7 +41,7 @@ namespace Gameboard.Integrations
         /// <param name="teamService"></param>
         /// <param name="mapper"></param>
         /// <param name="hub"></param>
-        /// <param name="gameFactory"></param>        
+        /// <param name="gameFactory"></param>
         public GameEngineEventHandler(
             ILogger<GameEngineEventHandler> logger,
             IProblemRepository problemRepository,
@@ -91,14 +91,15 @@ namespace Gameboard.Integrations
             if (challenge == null)
                 return;
 
-            problem.GamespaceReady = state.GamespaceReady;
-            problem.HasGamespace = state.HasGamespace;
             problem.Status = state.Status.ToString();
 
             problem.Score = (challenge.Points / 100.0) * state.Percent;
 
             problem.Text = state.Text;
+
             problem.GamespaceText = state.GamespaceText;
+            problem.GamespaceReady = state.GamespaceReady;
+            problem.HasGamespace = state.HasGamespace;
 
             if (state.Start > problem.Start)
                 problem.Start = state.Start;
@@ -119,6 +120,16 @@ namespace Gameboard.Integrations
             }
 
             ProblemRepository.Update(problem).Wait();
+
+            //sync any problems that shared this problem's workspace
+            foreach (var p in ProblemRepository.GetAll().Where(o => o.SharedId == problem.SharedId))
+            {
+                p.GamespaceText = state.GamespaceText;
+                p.GamespaceReady = state.GamespaceReady;
+                p.HasGamespace = state.HasGamespace;
+                ProblemRepository.Update(p).Wait();
+            }
+
             Logger.LogDebug($"Handling engine event [updated] for {state.Id} - saved");
 
             var model = Mapper.Map<ProblemDetail>(problem);
@@ -127,7 +138,7 @@ namespace Gameboard.Integrations
             Hub.Clients.Group(problem.TeamId).ProblemUpdated(model).Wait();
 
             if (model.Score > 0)
-            {            
+            {
                 TeamService.CalculateScore(board.Id, problem.TeamId);
             }
 
@@ -135,7 +146,7 @@ namespace Gameboard.Integrations
             Hub.Clients.Group(problem.TeamId).TeamUpdated(team).Wait();
 
             Logger.LogDebug($"Handling engine event [updated] for {state.Id} - broadcasted");
-        }        
+        }
 
         /// <summary>
         /// handle graded flag and notify
@@ -152,11 +163,11 @@ namespace Gameboard.Integrations
             {
                 entity.Status = flag.Status;
                 entity.Timestamp = flag.Timestamp;
-                
+
                 await MapSubmissionTokens(flag.SubmissionId, flag.Tokens, entity);
 
                 var team = TeamService.GetById(entity.Problem.TeamId).Result;
-                
+
                 Hub.Clients.Group(entity.Problem.TeamId).TeamUpdated(team).Wait();
 
                 Logger.LogDebug($"Handling engine event [graded] for {flag.ProblemId} - saved");
@@ -166,18 +177,18 @@ namespace Gameboard.Integrations
 
         /// <summary>
         /// map the problem state tokens to the tokens collection
-        /// </summary>        
+        /// </summary>
         async Task MapProblemTokens(string problemId, List<GameEngine.Abstractions.Models.Token> tokens, Data.Problem parent)
         {
             var db = SubmissionRepository.DbContext;
 
-            var ordered = tokens.OrderBy(x => x.Index);            
+            var ordered = tokens.OrderBy(x => x.Index);
 
             foreach (var t in ordered)
             {
                 var token = parent.Tokens.SingleOrDefault(x => x.Index == t.Index);
 
-                if (token == null) 
+                if (token == null)
                 {
                     token = new Token();
                     parent.Tokens.Add(token);
@@ -226,4 +237,3 @@ namespace Gameboard.Integrations
         }
     }
 }
-
