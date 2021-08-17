@@ -1,3 +1,9 @@
+# ⚠️ DEPRECATION NOTICE ⚠️
+
+This repository has been deprecated. Please visit the [new Gameboard project](https://github.com/cmu-sei/gameboard) for the latest code.
+
+---
+
 # Gameboard API
 
 Developed by Carnegie Mellon University's Software Engineering Institute (SEI), **Gameboard** is a flexible web platform that provides game design capabilities and a competition-ready user interface. The Gameboard API works in conjunction with the [Gameboard UI](https://github.com/cmu-sei/gameboard-ui-v2) web client to deliver a full competition environment.
